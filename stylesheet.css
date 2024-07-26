@@ -1,39 +1,62 @@
+/* Ensure the body content is centered */
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     margin: 50px;
+    min-height: 100vh; /* Ensure the body takes up full height of the viewport */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
+/* Style for the button links */
 .button-link {
     padding: 10px 20px;
     list-style: none;
     border-radius: 5px;
     margin-right: 10px;
+    margin-bottom: 10px; /* Added margin-bottom to handle wrapping */
 }
 
+/* Styles for headings */
 h1 {
     font-size: 60px;
+    margin: 0; /* Reset margin for consistency */
 }
 
 h2 {
-    margin: 50px 0px;
+    margin: 50px 0;
     font-size: 40px;
 }
 
 h3 {
     font-size: 25px;
+    margin: 20px 0; /* Added margin for consistency */
 }
 
+/* Ensure list items are centered */
 ul {
     list-style: none;
+    padding: 0; /* Remove default padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: center; /* Center items horizontally */
+    margin: 0; /* Reset margin for consistency */
 }
 
 li {
     display: inline-block;
+    margin: 5px; /* Add margin for spacing */
 }
 
+/* Link styles */
 a {
     color: black;
     background-color: #9a9b9b;
+    text-decoration: none; /* Remove underline */
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 a:hover {
