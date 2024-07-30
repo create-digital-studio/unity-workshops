@@ -5,6 +5,8 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 50px;
     min-height: 100vh; /* Ensure the body takes up full height of the viewport */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -17,6 +19,8 @@ body {
     border-radius: 5px;
     margin-right: 10px;
     margin-bottom: 10px; /* Added margin-bottom to handle wrapping */
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Styles for headings */
@@ -28,11 +32,15 @@ h1 {
 h2 {
     margin: 50px 0;
     font-size: 40px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h3 {
     font-size: 25px;
     margin: 20px 0; /* Added margin for consistency */
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Ensure list items are centered */
@@ -43,11 +51,15 @@ ul {
     flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: center; /* Center items horizontally */
     margin: 0; /* Reset margin for consistency */
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 li {
     display: inline-block;
     margin: 5px; /* Add margin for spacing */
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Link styles */
@@ -55,6 +67,8 @@ a {
     color: black;
     background-color: #9a9b9b;
     text-decoration: none; /* Remove underline */
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
     padding: 10px 20px;
     border-radius: 5px;
 }
@@ -62,4 +76,6 @@ a {
 a:hover {
     color: white;
     background-color: black;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
 }

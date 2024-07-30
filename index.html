@@ -14,13 +14,13 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 50px;
-            padding: 10px;
+            padding: 20px;
         }
 
         .popout {
             position: absolute;
             width: 250px;
-            padding: 20px;
+            padding: 50px;
             background-color: #f9f9f9;
             border: 1px solid #ccc;
             transition: transform 0.3s ease-in-out;
@@ -77,34 +77,34 @@
         <section id="Section 1" class="video-section">
             <h2>Part 1</h2>
             <div class="video-container">
-                <div class="popout left-popout">Left placeholder text for Part 1</div>
+                <div class="popout left-popout">{{popupTexts[0]}}</div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/884539954?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 1"></iframe>
                 </div>
-                <div class="popout right-popout">Right placeholder text for Part 1</div>
+                <div class="popout right-popout">{{popupTexts[1]}}</div>
             </div>
         </section>
 
         <section id="Section 2" class="video-section">
             <h2>Part 2</h2>
-            <h3><a href="https://gwu.box.com/s/f9o2oa0h8l8gbxoljikzjarvh60dufdz" class="button-link" target="_blank" rel="noopener noreferrer">Download the sounds for Part 2</a></h3>
+            <h3><a href="https://gwu.box.com/s/f9o2oa0h8l8gbxoljikzjarvh60dufdz" class="button-link" target="_blank" rel="noopener noreferrer">Download the Sounds for Part 2</a></h3>
             <div class="video-container">
-                <div class="popout left-popout">Left placeholder text for Part 2</div>
+                <div class="popout left-popout">{{popupTexts[2]}}</div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/890321470?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 2"></iframe>
                 </div>
-                <div class="popout right-popout">Right placeholder text for Part 2</div>
+                <div class="popout right-popout">{{popupTexts[3]}}</div>
             </div>
         </section>
 
         <section id="Section 3" class="video-section">
             <h2>Part 3</h2>
             <div class="video-container">
-                <div class="popout left-popout">Left placeholder text for Part 3</div>
+                <div class="popout left-popout">{{popupTexts[4]}}</div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/951677350?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 3"></iframe>
                 </div>
-                <div class="popout right-popout">Right placeholder text for Part 3</div>
+                <div class="popout right-popout">{{popupTexts[5]}}</div>
             </div>
         </section>
 
@@ -112,20 +112,25 @@
             <h2>Part 4</h2>
             <h3><a href="https://gwu.box.com/s/9g3o4tq1fdtyl3xf17vw1wler3kfbxjf" class="button-link" target="_blank" rel="noopener noreferrer">Download the sounds for Part 4</a></h3>
             <div class="video-container">
-                <div class="popout left-popout">Left placeholder text for Part 4</div>
+                <div class="popout left-popout">{{popupTexts[6]}}</div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/987310022?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 4"></iframe>
                 </div>
-                <div class="popout right-popout">Right placeholder text for Part 4</div>
+                <div class="popout right-popout">{{popupTexts[7]}}</div>
             </div>
         </section>
     </main>
 
     <script>
-        angular.module('videoApp', [])
-            .controller('MainController', function($scope) {
-                // Controller logic (if needed)
-            });
+       angular.module('videoApp', [])
+    .controller('MainController', function($scope, $http) {
+        $http.get('popup-messages.txt').then(function(response) {
+            // Assuming each line is for a different popup and the text file is plain text
+            var lines = response.data.split('\n');
+            $scope.popupTexts = lines;
+        });
+    });
+
     </script>
 </body>
 </html>
