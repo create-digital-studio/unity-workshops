@@ -231,7 +231,7 @@
     </main>
 
     <script>
-  angular.module('videoApp', ['ngSanitize', 'ngAnimate'])
+angular.module('videoApp', ['ngSanitize', 'ngAnimate'])
 .controller('MainController', function($scope, $http) {
     $http.get('popup-messages.txt')
     .then(function(response) {
@@ -241,10 +241,26 @@
         
         var lines = data.split('\n');
         var popoutData = [];
+        var leftPopout = '';
+        var rightPopout = '';
 
-        for (var i = 0; i < lines.length; i += 5) {
-            var leftPopout = lines[i] + '<br><br>' + lines[i + 1];
-            var rightPopout = lines[i + 2] + '<br><br>' + lines[i + 3] + '<br><br>' + lines[i + 4];
+        for (var i = 0; i < lines.length; i++) {
+            if (lines[i].startsWith('Video')) {
+                // If we have already collected popouts, push them to the array
+                if (leftPopout && rightPopout) {
+                    popoutData.push(leftPopout, rightPopout);
+                    leftPopout = '';
+                    rightPopout = '';
+                }
+                leftPopout = lines[i] + '<br><br>' + (lines[i + 1] || '');
+                i++;
+            } else if (lines[i].startsWith('Learning Objectives')) {
+                rightPopout = lines[i] + '<br><br>' + (lines[i + 1] || '') + '<br><br>' + (lines[i + 2] || '');
+                i += 2;
+            }
+        }
+        // Push the last collected popouts
+        if (leftPopout && rightPopout) {
             popoutData.push(leftPopout, rightPopout);
         }
 
@@ -254,6 +270,7 @@
         console.error('Error fetching text file:', error);
     });
 });
+
 
     </script>
 
