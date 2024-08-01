@@ -9,6 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <!-- Include ngSanitize module -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
+    <!-- Include ngAnimate module -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.js"></script>
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         /* Ensure the body content is centered */
@@ -18,8 +22,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
             margin: 50px;
             min-height: 100vh; /* Ensure the body takes up full height of the viewport */
             box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -32,8 +35,7 @@
             border-radius: 5px;
             margin-right: 10px;
             margin-bottom: 10px; /* Added margin-bottom to handle wrapping */
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         }
 
         /* Styles for headings */
@@ -45,15 +47,13 @@
         h2 {
             margin: 50px 0;
             font-size: 40px;
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         }
 
         h3 {
             font-size: 25px;
             margin: 20px 0; /* Added margin for consistency */
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         }
 
         /* Ensure list items are centered */
@@ -64,15 +64,13 @@
             flex-wrap: wrap; /* Allow wrapping for smaller screens */
             justify-content: center; /* Center items horizontally */
             margin: 0; /* Reset margin for consistency */
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         }
 
         li {
             display: inline-block;
             margin: 5px; /* Add margin for spacing */
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         }
 
         /* Link styles */
@@ -80,8 +78,7 @@
             color: black;
             background-color: #9a9b9b;
             text-decoration: none; /* Remove underline */
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
             padding: 10px 20px;
             border-radius: 5px;
         }
@@ -89,8 +86,7 @@
         a:hover {
             color: white;
             background-color: black;
-            font-style: normal;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         }
 
         /* Additional CSS for animations and styling */
@@ -106,29 +102,31 @@
         .popout {
             position: absolute;
             width: 250px;
-            padding: 20px; /* Adjusted padding */
-            background-color: #f9f9f9;
+            padding: 10px; /* Adjusted padding */
+            background-color: #cce7ff; /* Baby blue background */
             border: 1px solid #ccc;
-            transition: transform 0.3s ease-in-out;
-            display: none;
             text-align: left; /* Ensure text is left-justified */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow for better visibility */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
             z-index: 100; /* Ensure popouts are above other content */
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif; /* Set font */
+            border-radius: 8px; /* Rounded corners */
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            transform: scale(0.9);
         }
 
         .left-popout {
-            left: -300px; /* Adjusted position to prevent clipping off-screen */
-            transform: translateX(0); /* Adjusted translation to align properly */
+            left: -2%; /* Adjusted position to prevent clipping off-screen */
         }
 
         .right-popout {
-            right: -300px; /* Adjusted position to ensure visibility */
-            transform: translateX(0); /* Adjusted translation to align properly */
+            right: -2%; /* Adjusted position to ensure visibility */
         }
 
         .video-container:hover .popout {
             display: block;
-            transform: translateX(0);
+            opacity: 1;
+            transform: scale(1);
         }
 
         /* Ensuring consistent iframe size */
@@ -144,6 +142,25 @@
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        /* Animations for popouts */
+        .popout.ng-hide {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .popout.ng-hide-remove {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .popout.ng-hide-add {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -168,63 +185,68 @@
 
         <section id="Section 1" class="video-section">
             <h2>Part 1</h2>
-            <div class="video-container">
-                <div class="popout left-popout" ng-bind-html="popupTexts[0]"></div>
+            <div class="video-container" ng-mouseenter="showPopout = true" ng-mouseleave="showPopout = false">
+                <div class="popout left-popout" ng-show="showPopout" ng-bind-html="popupTexts[0]"></div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/884539954?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 1"></iframe>
                 </div>
-                <div class="popout right-popout" ng-bind-html="popupTexts[1]"></div>
+                <div class="popout right-popout" ng-show="showPopout" ng-bind-html="popupTexts[1]"></div>
             </div>
         </section>
 
         <section id="Section 2" class="video-section">
             <h2>Part 2</h2>
             <h3><a href="https://gwu.box.com/s/f9o2oa0h8l8gbxoljikzjarvh60dufdz" class="button-link" target="_blank" rel="noopener noreferrer">Download the Sounds for Part 2</a></h3>
-            <div class="video-container">
-                <div class="popout left-popout" ng-bind-html="popupTexts[2]"></div>
+            <div class="video-container" ng-mouseenter="showPopout = true" ng-mouseleave="showPopout = false">
+                <div class="popout left-popout" ng-show="showPopout" ng-bind-html="popupTexts[2]"></div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/890321470?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 2"></iframe>
                 </div>
-                <div class="popout right-popout" ng-bind-html="popupTexts[3]"></div>
+                <div class="popout right-popout" ng-show="showPopout" ng-bind-html="popupTexts[3]"></div>
             </div>
         </section>
 
         <section id="Section 3" class="video-section">
             <h2>Part 3</h2>
-            <div class="video-container">
-                <div class="popout left-popout" ng-bind-html="popupTexts[4]"></div>
+            <div class="video-container" ng-mouseenter="showPopout = true" ng-mouseleave="showPopout = false">
+                <div class="popout left-popout" ng-show="showPopout" ng-bind-html="popupTexts[4]"></div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/951677350?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 3"></iframe>
                 </div>
-                <div class="popout right-popout" ng-bind-html="popupTexts[5]"></div>
+                <div class="popout right-popout" ng-show="showPopout" ng-bind-html="popupTexts[5]"></div>
             </div>
         </section>
 
         <section id="Section 4" class="video-section">
             <h2>Part 4</h2>
             <h3><a href="https://gwu.box.com/s/9g3o4tq1fdtyl3xf17vw1wler3kfbxjf" class="button-link" target="_blank" rel="noopener noreferrer">Download the sounds for Part 4</a></h3>
-            <div class="video-container">
-                <div class="popout left-popout" ng-bind-html="popupTexts[6]"></div>
+            <div class="video-container" ng-mouseenter="showPopout = true" ng-mouseleave="showPopout = false">
+                <div class="popout left-popout" ng-show="showPopout" ng-bind-html="popupTexts[6]"></div>
                 <div class="iframe-wrapper">
                     <iframe src="https://player.vimeo.com/video/987310022?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Intro to Unity Part 4"></iframe>
                 </div>
-                <div class="popout right-popout" ng-bind-html="popupTexts[7]"></div>
+                <div class="popout right-popout" ng-show="showPopout" ng-bind-html="popupTexts[7]"></div>
             </div>
         </section>
     </main>
 
     <script>
-        angular.module('videoApp', ['ngSanitize'])
-        .controller('MainController', function($scope, $http) {
-            $http.get('popup-messages.txt').then(function(response) {
-                // Splitting the file content into lines
-                var lines = response.data.split('\n');
-                // Mapping each line to replace semicolons with HTML line breaks
-                $scope.popupTexts = lines.map(function(line) {
-                    return line.replace(/;/g, '<br>');  // Replaces all semicolons with <br>
-                });
-            });
+    angular.module('videoApp', ['ngSanitize', 'ngAnimate'])
+    .controller('MainController', function($scope, $http) {
+        $http.get('popup-messages.txt').then(function(response) {
+            var lines = response.data.split('\n');
+            var popoutData = [];
+
+            for (var i = 0; i < lines.length; i += 5) {
+                var leftPopout = lines[i] + '<br><br>' + lines[i + 1];
+                var rightPopout = lines[i + 2] + '<br><br>' + lines[i + 3] + '<br><br>' + lines[i + 4];
+                popoutData.push(leftPopout, rightPopout);
+            }
+
+            $scope.popupTexts = popoutData;
         });
+    });
     </script>
+
 </body>
 </html>

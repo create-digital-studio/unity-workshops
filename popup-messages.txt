@@ -1,8 +1,20 @@
-Video 1 Summary: You will implement the basic core 2D game engine, including a player and collectible game object, using graphical scripting.
-Learning Objectives: Explain the function of triggers and colliders within Unity and demonstrate how to convert a collider into a trigger to modify interactions between game objects; Modify player input settings to streamline movement mechanics using Unity's visual scripting tools.
-Video 2 Summary: You will implement basic but variable sound design for the game using graphical scripting.
-Learning Objectives: Introduce and apply Unity's spatial audio features to aid player navigation and interaction within a game environment; Configure audio elements to respond to game events and player actions, creating a dynamic audio landscape.
-Video 3 Summary: You will explore more sophisticated game interactions, including score counting.
-Learning Objectives: Implement changes to game object properties such as transparency, demonstrating the use of linear interpolation (Lerp) functions to dynamically adjust transparency based on the player's proximity to an object; Configure and utilize Unity's game management systems to update and manage game states such as scores and gameplay elements.
-Video 4 Summary: You will incorporate dynamic music score generation using graphical scripting.
-Learning Objectives: Manipulate audio playback using Unity's scripting tools to ensure synchronous playback that corresponds with in-game actions and events; Develop methods to manage audio loops and sequences effectively, maintaining gameplay coherence and audio continuity.
+Video 1 Summary: 
+You will implement the basic core 2D game engine, including a player and collectible game object, using graphical scripting.
+Learning Objectives: 
+Explain the function of triggers and colliders within Unity and demonstrate how to convert a collider into a trigger to modify interactions between game objects. 
+Modify player input settings to streamline movement mechanics using Unity's visual scripting tools.
+Video 2 Summary: 
+You will implement basic but variable sound design for the game using graphical scripting.
+Learning Objectives: 
+Introduce and apply Unity's spatial audio features to aid player navigation and interaction within a game environment.
+Configure audio elements to respond to game events and player actions, creating a dynamic audio landscape.
+Video 3 Summary: 
+You will explore more sophisticated game interactions, including score counting.
+Learning Objectives: 
+Implement changes to game object properties such as transparency, demonstrating the use of linear interpolation (Lerp) functions to dynamically adjust transparency based on the player's proximity to an object.
+Configure and utilize Unity's game management systems to update and manage game states such as scores and gameplay elements.
+Video 4 Summary: 
+You will incorporate dynamic music score generation using graphical scripting.
+Learning Objectives: 
+Manipulate audio playback using Unity's scripting tools to ensure synchronous playback that corresponds with in-game actions and events.
+Develop methods to manage audio loops and sequences effectively, maintaining gameplay coherence and audio continuity.
