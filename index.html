@@ -231,21 +231,30 @@
     </main>
 
     <script>
-    angular.module('videoApp', ['ngSanitize', 'ngAnimate'])
-    .controller('MainController', function($scope, $http) {
-        $http.get('popup-messages.txt').then(function(response) {
-            var lines = response.data.split('\n');
-            var popoutData = [];
+  angular.module('videoApp', ['ngSanitize', 'ngAnimate'])
+.controller('MainController', function($scope, $http) {
+    $http.get('popup-messages.txt')
+    .then(function(response) {
+        var data = response.data;
+        // Normalize line endings
+        data = data.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        
+        var lines = data.split('\n');
+        var popoutData = [];
 
-            for (var i = 0; i < lines.length; i += 5) {
-                var leftPopout = lines[i] + '<br><br>' + lines[i + 1];
-                var rightPopout = lines[i + 2] + '<br><br>' + lines[i + 3] + '<br><br>' + lines[i + 4];
-                popoutData.push(leftPopout, rightPopout);
-            }
+        for (var i = 0; i < lines.length; i += 5) {
+            var leftPopout = lines[i] + '<br><br>' + lines[i + 1];
+            var rightPopout = lines[i + 2] + '<br><br>' + lines[i + 3] + '<br><br>' + lines[i + 4];
+            popoutData.push(leftPopout, rightPopout);
+        }
 
-            $scope.popupTexts = popoutData;
-        });
+        $scope.popupTexts = popoutData;
+    })
+    .catch(function(error) {
+        console.error('Error fetching text file:', error);
     });
+});
+
     </script>
 
 </body>
