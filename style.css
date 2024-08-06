@@ -1,0 +1,147 @@
+/* Ensure the body content is centered */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 50px;
+    min-height: 100vh; /* Ensure the body takes up full height of the viewport */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Style for the button links */
+.button-link {
+    padding: 10px 20px;
+    list-style: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px; /* Added margin-bottom to handle wrapping */
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+/* Styles for headings */
+h1 {
+    font-size: 60px;
+    margin: 0; /* Reset margin for consistency */
+}
+
+h2 {
+    margin: 50px 0;
+    font-size: 40px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    font-size: 25px;
+    margin: 20px 0; /* Added margin for consistency */
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+/* Ensure list items are centered */
+ul {
+    list-style: none;
+    padding: 0; /* Remove default padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: center; /* Center items horizontally */
+    margin: 0; /* Reset margin for consistency */
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+li {
+    display: inline-block;
+    margin: 5px; /* Add margin for spacing */
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+/* Link styles */
+a {
+    color: black;
+    background-color: #9a9b9b;
+    text-decoration: none; /* Remove underline */
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+a:hover {
+    color: white;
+    background-color: black;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+/* Additional CSS for animations and styling */
+.video-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+.popout {
+    position: absolute;
+    width: 250px;
+    padding: 10px; /* Adjusted padding */
+    background-color: #cce7ff; /* Baby blue background */
+    border: 1px solid #ccc;
+    text-align: left; /* Ensure text is left-justified */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    z-index: 100; /* Ensure popouts are above other content */
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif; /* Set font */
+    border-radius: 8px; /* Rounded corners */
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.left-popout {
+    left: -2%; /* Adjusted position to prevent clipping off-screen */
+}
+
+.right-popout {
+    right: -2%; /* Adjusted position to ensure visibility */
+}
+
+.video-container:hover .popout {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Ensuring consistent iframe size */
+.iframe-wrapper {
+    width: 640px;
+    height: 360px;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Animations for popouts */
+.popout.ng-hide {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease-in-out;
+}
+
+.popout.ng-hide-remove {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.popout.ng-hide-add {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease-in-out;
+}
