@@ -19,6 +19,7 @@ body {
     margin-right: 10px;
     margin-bottom: 10px; /* Added margin-bottom to handle wrapping */
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 18px;
 }
 
 /* Styles for headings */
@@ -58,8 +59,8 @@ li {
 
 /* Link styles */
 a {
-    color: black;
-    background-color: #9a9b9b;
+    color: rgb(255, 255, 255);
+    background-color: #4f519c;
     text-decoration: none; /* Remove underline */
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     padding: 10px 20px;
